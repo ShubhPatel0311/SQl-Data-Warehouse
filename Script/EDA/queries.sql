@@ -108,3 +108,16 @@ c.customer_key,
 c.first_name,
 c.last_name
 order by sum(f.sales_amount) desc
+
+
+SELECT 'Total sales' as measure_name, SUM(sales_amount) as measure_value from gold.fact_sales
+union
+SELECT 'Average price' as measure_name, avg(price) as measure_value from gold.fact_sales
+union
+SELECT 'Total Qty' as measure_name,  SUM(quantity) as measure_value from gold.fact_sales
+union
+SELECT 'Total Orders' as measure_name, count(DISTINCT Order_number) as measure_value from gold.fact_sales
+union
+SELECT 'Total Products' as measure_name, count(DISTINCT product_name) as measure_value from gold.dim_products
+union
+SELECT 'Total Customer' as measure_name, count(DISTINCT customer_key) as measure_value from gold.dim_customers
