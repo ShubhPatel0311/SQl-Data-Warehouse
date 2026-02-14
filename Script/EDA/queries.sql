@@ -80,3 +80,31 @@ from gold.dim_customers c
 left join gold.fact_sales f
 on c.customer_key = f.customer_key
 group by c.Country;
+
+-- Which 5 products generate the Highest revenue ?
+
+SELECT top 5 p.product_name,
+sum(f.sales_amount) as total_sales_prod
+from gold.dim_products p
+left join gold.fact_sales f
+on p.product_key = f.product_key
+group by p.product_name
+order by sum(f.sales_amount) desc;
+
+-- Find the top 10 Customers who have generated the highest revenue
+
+-- cust_key, first_name,last_name
+
+SELECT TOP 10
+c.customer_key,
+c.first_name,
+c.last_name,
+sum(f.sales_amount)
+from gold.dim_customers c
+left join gold.fact_sales f
+on c.customer_key = f.customer_key
+group by 
+c.customer_key,
+c.first_name,
+c.last_name
+order by sum(f.sales_amount) desc
