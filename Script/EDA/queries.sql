@@ -21,7 +21,6 @@ datediff(year,min(birthdate),GETDATE()) as oldest_customer_age
 from gold.dim_customers;
 
 
-
 -- Total customers by country!
 
 SELECT 
