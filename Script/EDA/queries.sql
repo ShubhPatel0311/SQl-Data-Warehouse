@@ -1,4 +1,3 @@
-
 use datawarehouse;
 
 -- Retrieve list of unique countries
