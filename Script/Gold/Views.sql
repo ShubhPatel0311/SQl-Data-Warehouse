@@ -1,5 +1,3 @@
-
-
 CREATE VIEW gold.dim_customers AS
 SELECT
     ROW_NUMBER() OVER (ORDER BY cst_id) AS customer_key, -- Surrogate key
@@ -23,9 +21,6 @@ LEFT JOIN silver.erp_loc_a101 la
 
 
 
-
-
-
 CREATE VIEW gold.dim_products AS
 SELECT
     ROW_NUMBER() OVER (ORDER BY pn.prd_start_dt, pn.prd_key) AS product_key, -- Surrogate key
@@ -43,10 +38,6 @@ FROM silver.crm_prd_info pn
 LEFT JOIN silver.erp_px_cat_g1v2 pc
     ON pn.cat_id = pc.id
 WHERE pn.prd_end_dt IS NULL; 
-
-
-
-
 
 
 
